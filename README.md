@@ -1,2 +1,2 @@
 # react_course
-Some examples and exercises of React
+Some examples and exercises of React.
