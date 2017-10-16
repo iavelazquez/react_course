@@ -1,13 +1,13 @@
 const Card = (props) => {
 	return (
-  	    <div>
-    	    <img width="75" className="avatar" src={props.avatar_url} />
-            <div className="info" >
-      	        <div className="name">{props.name}</div>
-      	        <div>{props.company}</div>
-            </div>
-        </div>
-  );
+     	<div>
+       	<img width="75" className="avatar" src={props.avatar_url} />
+         <div className="info" >
+         	<div className="name">{props.name}</div>
+         	<div>{props.company}</div>
+         </div>
+      </div>
+   );
 };
 
 let data;
