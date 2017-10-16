@@ -32,14 +32,14 @@ class App extends React.Component {
     
     render() {
         return (
-        <div>
-            <Button incrementValue={1} onClickFunc={this.incrementCounter}/>
-            <Button incrementValue={5} onClickFunc={this.incrementCounter}/>
-            <Button incrementValue={10} onClickFunc={this.incrementCounter}/>
-            <Button incrementValue={100} onClickFunc={this.incrementCounter}/>
-        <Result label={this.state.counter} />
-        </div>
-    );
+            <div>
+                <Button incrementValue={1} onClickFunc={this.incrementCounter}/>
+                <Button incrementValue={5} onClickFunc={this.incrementCounter}/>
+                <Button incrementValue={10} onClickFunc={this.incrementCounter}/>
+                <Button incrementValue={100} onClickFunc={this.incrementCounter}/>
+                <Result label={this.state.counter} />
+            </div>
+        );
     }
 }
 

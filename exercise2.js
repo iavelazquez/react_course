@@ -1,13 +1,13 @@
 const Card = (props) => {
 	return (
-     	<div>
-       	<img width="75" className="avatar" src={props.avatar_url} />
-         <div className="info" >
-         	<div className="name">{props.name}</div>
-         	<div>{props.company}</div>
-         </div>
-      </div>
-   );
+  	    <div>
+    	    <img width="75" className="avatar" src={props.avatar_url} />
+            <div className="info" >
+      	        <div className="name">{props.name}</div>
+      	        <div>{props.company}</div>
+            </div>
+        </div>
+    );
 };
 
 let data;
@@ -28,21 +28,21 @@ class Form extends React.Component {
     }; 
   	
 	render(){
-  	return (
-  		<div>
-    		<form onSubmit={this.handleSubmit}>
-      		    <input 
-          	        type="text" 
-                    ref={(input) => this.userNameInput = input }
-                    placeholder="Github username" 
-                    required
-                />
-        	    <button type="submit">Add user</button>
-    		</form>
-  		</div>
-    );
-  }
-}
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <input 
+                        type="text" 
+                        ref={(input) => this.userNameInput = input }
+                        placeholder="Github username" 
+                        required
+                    />
+                    <button type="submit">Add user</button>
+                </form>
+            </div>
+        );
+    }
+};
 
 class App extends React.Component{
 	state = {
@@ -58,16 +58,16 @@ class App extends React.Component{
                 company:"Hitss"
             }
 	    ]
-    } 
+    };
 
 	render() {
-  	return (
-    	<div>
-    		<Form />
-      	    <CardList cards={this.state.cards}/>
-  		</div>
-    );
-  };
+  	    return (
+    	    <div>
+    		    <Form />
+      	        <CardList cards={this.state.cards}/>
+  		    </div>
+        );
+    };
 };
 
 ReactDOM.render(<App/>, mountNode);
