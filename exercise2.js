@@ -1,19 +1,20 @@
+let data;
+
 const Card = (props) => {
-	return (
-  	    <div>
-    	    <img width="75" className="avatar" src={props.avatar_url} />
+    return (
+        <div id="{props.name}">
+            <img width="75" className="avatar" src={props.avatar_url} />
             <div className="info" >
-      	        <div className="name">{props.name}</div>
-      	        <div>{props.company}</div>
+                <div className="name">{props.name}</div>
+                <div>{props.company}</div>
             </div>
         </div>
     );
 };
 
-let data;
 
 const CardList = (props) => {
-	return (
+    return (
         <div>
             {props.cards.map(card => <Card {...card} />)}
         </div>
@@ -24,18 +25,19 @@ class Form extends React.Component {
   
     state = { userName : ''};
 
-  	handleSubmit = (event) => {
-    	event.preventDefault();
-        console.log('Test...' + this.state.userName);
+    handleSubmit = (event) => {
+        event.preventDefault();
+        //console.log('Test...' + this.state.userName);
       
         axios.get(`https://api.github.com/users/${this.state.userName}`)
-      	    .then(resp => {
-        	    console.log(resp);    
-            });
+        .then(resp => {
+            //console.log(resp);
+            this.props.onSubmit(resp.data);
+        })
       
-        }; 
+    }; 
     
-	render(){
+    render(){
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -55,27 +57,24 @@ class Form extends React.Component {
 };
 
 class App extends React.Component{
-	state = {
-  	    cards: [
-            {
-                name:"Arath V",
-                avatar_url:"https://avatars0.githubusercontent.com/u/1779212?v=4",
-                company:"iTexico"
-            },
-            {
-                name:"Mike",
-                avatar_url:"https://avatars0.githubusercontent.com/u/1779212?v=4",
-                company:"Hitss"
-            }
-	    ]
-    };
+    state = {
+    cards: []
+  };
 
-	render() {
-  	    return (
-    	    <div>
-    		    <Form />
-      	        <CardList cards={this.state.cards}/>
-  		    </div>
+    addNewCard = (cardInfo) => {
+    //alert('dasd');
+    console.log(cardInfo);
+    this.setState( prevState => ({
+        cards: prevState.cards.concat(cardInfo)
+    }));
+  };
+  
+    render() {
+        return (
+            <div>
+                <Form onSubmit={this.addNewCard}/>
+                <CardList cards={this.state.cards}/>
+            </div>
         );
     };
 };
