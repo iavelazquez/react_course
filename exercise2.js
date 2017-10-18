@@ -22,18 +22,28 @@ const CardList = (props) => {
 
 class Form extends React.Component {
   
+    state = { userName : ''};
+
   	handleSubmit = (event) => {
     	event.preventDefault();
-        console.log('Test...' + this.userNameInput.value);
-    }; 
-
+        console.log('Test...' + this.state.userName);
+      
+        axios.get(`https://api.github.com/users/${this.state.userName}`)
+      	    .then(resp => {
+        	    console.log(resp);    
+            });
+      
+        }; 
+    
 	render(){
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <input 
                         type="text" 
-                        ref={(input) => this.userNameInput = input }
+                        //ref={(input) => this.userNameInput = input }
+                        value={this.state.userName}
+                        onChange={(event) => this.setState({userName: event.target.value})}
                         placeholder="Github username" 
                         required
                     />
