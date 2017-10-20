@@ -18,7 +18,7 @@ const CardList = (props) => {
         <div>
             {props.cards.map(card => <Card {...card} />)}
         </div>
-  );
+    );
 };
 
 class Form extends React.Component {
@@ -27,8 +27,7 @@ class Form extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        //console.log('Test...' + this.state.userName);
-      
+        
         axios.get(`https://api.github.com/users/${this.state.userName}`)
         .then(resp => {
             //console.log(resp);
@@ -58,16 +57,15 @@ class Form extends React.Component {
 
 class App extends React.Component{
     state = {
-    cards: []
-  };
+        cards: []
+    };
 
     addNewCard = (cardInfo) => {
-    //alert('dasd');
-    console.log(cardInfo);
-    this.setState( prevState => ({
-        cards: prevState.cards.concat(cardInfo)
-    }));
-  };
+        console.log(cardInfo);
+        this.setState( prevState => ({
+            cards: prevState.cards.concat(cardInfo)
+        }));
+    };
   
     render() {
         return (
